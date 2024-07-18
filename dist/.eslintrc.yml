@@ -1,0 +1,7 @@
+# See https://eslint.org/docs/latest/use/configure/configuration-files
+extends:
+  - drupal
+settings:
+  react:
+    version: "detect"
+rules: {  }

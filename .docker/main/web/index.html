@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+  <title>Drupal Gulp</title>
+  <!-- Package: theme1 -->
+  <link href="./themes/custom/theme1/dist/theme1.a.min.css" type="text/css" rel="stylesheet"/>
+  <link href="./themes/custom/theme1/dist/theme1.b.min.css" type="text/css" rel="stylesheet"/>
+  <link href="./themes/custom/theme1/components/atoms/button/button.min.css" type="text/css" rel="stylesheet"/>
+  <!-- Package: module1 -->
+  <link href="./modules/custom/module1/dist/module1.a.min.css" type="text/css" rel="stylesheet"/>
+  <link href="./modules/custom/module1/dist/module1.b.min.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+  <h1>Drupal Gulp</h1>
+  <p>
+    This page shows whether CSS/JS compilation went well. In the test lists
+    below, if <i>Pass</i> is not written in color, then there are two
+    possibilities:
+  </p>
+  <ol>
+    <li>You haven't run Gulp yet. You need to run <code>npx gulp build</code>.</li>
+    <li>Gulp is failing and needs to be fixed.</li>
+  </ol>
+  <p>After you fix the problem, the word <i>Pass</i> should be written in color.</p>
+
+  <h2 id="general">General</h2>
+  <ul class="test-list">
+    <li>
+      <span class="badge">Pass</span> indicates a failed test.
+    </li>
+    <li class="test-4">
+      <span class="badge">Pass</span> Background image:
+      <span class="subject"></span>
+    </li>
+    <li class="test-5">
+      <span class="badge">Pass</span> Font face:
+      <span class="subject">Roboto</span>.
+    </li>
+    <li class="test-12">
+      <span class="badge">Pass</span>
+      Test: Uglification preserves variable named <code>Drupal</code>.
+    </li>
+  </ul>
+
+  <h2 id="theme-1">Theme: Theme 1</h2>
+  <ul class="test-list">
+    <li class="test-1">
+      <span class="badge">Pass</span>
+      Theme style: <code>theme1/styles/theme1.a.scss</code> built.
+    </li>
+    <li class="test-3">
+      <span class="badge">Pass</span>
+      Theme style: <code>theme1/styles/include/theme1.b.scss</code> built.
+    </li>
+    <li class="test-2">
+      <span class="badge">Pass</span>
+      Include: <code>theme1/styles/include/_include1.scss</code> built.
+    </li>
+    <li class="test-8">
+      <span class="badge">Pass</span>
+      Theme script: <code>theme1/scripts/theme1.a.js</code> built.
+    </li>
+    <li class="test-9">
+      <span class="badge">Pass</span>
+      Theme script: <code>theme1/scripts/theme1.b.js</code> built.
+    </li>
+  </ul>
+
+  <h2 id="component-button">Component: Button</h2>
+  <ul class="test-list">
+    <li class="test-13">
+      <span class="badge">Pass</span>
+      Test: Component styles: <code>atoms/button</code>: <button type="button" class="button js-button-reload">Reload</button>
+    </li>
+    <li class="test-14">
+      <span class="badge">Pass</span>
+      Test: Component script: <code>atoms/button</code>: <button type="button" class="button js-button-reload">Reload</button>
+    </li>
+  </ul>
+
+  <h2 id="module-1">Module: Module 1</h2>
+  <ul class="test-list">
+    <li class="test-10">
+      <span class="badge">Pass</span>
+      Module script: <code>modules1/scripts/module1.a.js</code> built.
+    </li>
+    <li class="test-11">
+      <span class="badge">Pass</span>
+      Module script: <code>modules1/scripts/module1.b.js</code> built.
+    </li>
+    <li class="test-6">
+      <span class="badge">Pass</span> Module file: <code>module1/styles/module1.a.scss</code> built.
+    </li>
+    <li class="test-7">
+      <span class="badge">Pass</span> Module file: <code>module1/styles/module1.b.scss</code> built.
+    </li>
+  </ul>
+</div>
+
+<!-- Prepare -->
+<script>
+  let Drupal = { "version": "x.y.z" };
+</script>
+
+<!-- Package: theme1 -->
+<script src="./themes/custom/theme1/dist/theme1.a.min.js"></script>
+<script src="./themes/custom/theme1/dist/theme1.b.min.js"></script>
+<script src="./themes/custom/theme1/components/atoms/button/button.min.js"></script>
+<!-- Package: module1 -->
+<script src="./modules/custom/module1/dist/module1.a.min.js"></script>
+<script src="./modules/custom/module1/dist/module1.b.min.js"></script>
+
+</body>
+</html>

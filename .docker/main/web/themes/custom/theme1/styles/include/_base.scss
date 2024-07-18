@@ -1,0 +1,52 @@
+body {
+  background-color: $color-1b;
+}
+
+code {
+  background-color: $color-1c;
+  color: $color-black;
+  display: inline-block;
+  font-family: monospace;
+  padding: .1rem .3rem;
+}
+
+.container {
+  background-color: $color-white;
+  font-family: sans-serif;
+  font-size: 14px;
+  margin: 2rem auto;
+  max-width: 600px;
+  padding: 1rem 2rem;
+}
+
+.test-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    border-top: 1px dotted $color-1a;
+    padding: .25rem .5rem;
+
+    &:last-of-type {
+      border-bottom: 1px dotted $color-1a;
+    }
+  }
+}
+
+.badge {
+  background-color: $color-failure;
+  color: $color-white;
+  display: inline-block;
+  margin-right: .3rem;
+  padding: .15rem .5rem;
+}
+
+.badge--success {
+  background-color: $color-success;
+}
+
+// If styles are being linted correctly, sass-lint will raise a warnings:
+// - no-color-literals.
+.test-sass-lint-warning {
+  color: #fff;
+}

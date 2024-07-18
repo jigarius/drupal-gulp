@@ -1,0 +1,14 @@
+services:
+  main:
+    image: node:22
+    container_name: drupal-gulp
+    entrypoint: '/usr/bin/tail -f /dev/null'
+    working_dir: '/app'
+    volumes:
+      - '.:/package'
+      - './.docker/main/web:/app/web'
+      - './.docker/main/package.json:/app/package.json'
+      - './dist/gulpfile.mjs:/app/gulpfile.mjs'
+      - './dist/gulp.config.mjs:/app/gulp.config.mjs'
+      - './dist/.sass-lint.yml:/app/.sass-lint.yml'
+      - './dist/.eslintrc.yml:/app/.eslintrc.yml'

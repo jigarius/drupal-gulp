@@ -1,0 +1,43 @@
+{
+  "name": "drupal-gulp",
+  "description": "Gulp presets for Drupal 8+ development.",
+  "type": "module",
+  "keywords": [
+    "drupal",
+    "gulp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jigarius/drupal-gulp.git"
+  },
+  "author": {
+    "name": "Jerry Jigarius Radwick",
+    "url": "https://jigarius.com/"
+  },
+  "license": "MIT",
+  "private": true,
+  "homepage": "https://github.com/jigarius/drupal-gulp",
+  "engines": {
+    "node": "^22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "eslint-config-drupal": "^5.0.2",
+    "glob": "^11.0.0",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cli": "^3.0.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sass-lint": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "gulplog": "^2.2.0",
+    "sass": "^1.77.8"
+  },
+  "devDependencies": {
+    "@types/gulp": "^4.0.17"
+  }
+}

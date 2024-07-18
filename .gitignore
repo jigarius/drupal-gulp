@@ -1,0 +1,6 @@
+# NPM.
+/package-lock.json
+node_modules
+
+# JetBrains IDE.
+.idea

@@ -1,0 +1,34 @@
+@import './common';
+
+.test-3 {
+  .badge {
+    background-color: $color-success;
+  }
+}
+
+.test-4 {
+  .badge {
+    background-color: $color-success;
+  }
+
+  .subject {
+    background-color: $color-failure;
+    background-image: url('../images/loader.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 18px;
+    vertical-align: bottom;
+    width: 28px;
+  }
+}
+
+.test-5 {
+  .badge {
+    background-color: $color-success;
+  }
+
+  .subject {
+    font-family: RobotoMono, sans-serif;
+  }
+}

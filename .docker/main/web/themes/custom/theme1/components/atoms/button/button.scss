@@ -1,0 +1,22 @@
+@import '../../../styles/common';
+
+.test-13 {
+  .badge {
+    background-color: $color-success;
+  }
+}
+
+.button {
+  background-color: $color-white;
+  border: 1px solid $color-success;
+  border-radius: 1rem;
+  color: $color-success;
+  cursor: pointer;
+  padding: .3rem 1rem .25rem;
+  transition: .3s;
+
+  &:hover {
+    background-color: $color-success;
+    color: $color-white;
+  }
+}

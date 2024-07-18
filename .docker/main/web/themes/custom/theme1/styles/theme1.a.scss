@@ -1,0 +1,9 @@
+@import './common';
+@import './include/base';
+@import './include/include1';
+
+.test-1 {
+  .badge {
+    background-color: $color-success;
+  }
+}

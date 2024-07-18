@@ -1,0 +1,6 @@
+/web/**/modules/custom/**/*.css
+/web/**/modules/custom/**/*.js
+/web/**/modules/custom/**/*.map
+/web/**/themes/custom/**/*.css
+/web/**/themes/custom/**/*.js
+/web/**/themes/custom/**/*.map
