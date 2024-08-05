@@ -447,9 +447,7 @@ export class ConfigBuilder {
         output: {
           comments: 'some'
         }
-      })
-      .addAllCustomThemes()
-      .addAllCustomModules();
+      });
   }
 
   /**

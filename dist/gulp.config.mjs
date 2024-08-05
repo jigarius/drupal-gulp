@@ -11,11 +11,9 @@ import path from 'path';
 const cwd = path.dirname(fileURLToPath(import.meta.url));
 const builder = new ConfigBuilder(cwd);
 
-builder.applyDefaults();
-
-// Modify configuration through the builder as required.
-// builder
-//   .addAllCustomModules()
-//   .addAllCustomThemes();
+builder
+  .applyDefaults()
+  .addAllCustomThemes()
+  .addAllCustomModules();
 
 export default builder.build();
