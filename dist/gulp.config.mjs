@@ -5,8 +5,12 @@
  */
 
 import { ConfigHelper } from 'drupal-gulp';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
-const ch = new ConfigHelper(import.meta.dirname);
+const cwd = path.dirname(fileURLToPath(import.meta.url));
+const ch = new ConfigHelper(cwd);
+
 let config = ch.getDefaults();
 
 // Modify configuration, as required.
