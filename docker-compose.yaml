@@ -1,6 +1,6 @@
 services:
   main:
-    image: node:22
+    image: node:20
     container_name: drupal-gulp
     entrypoint: '/usr/bin/tail -f /dev/null'
     working_dir: '/app'

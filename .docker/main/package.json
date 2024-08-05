@@ -7,8 +7,11 @@
     "url": "https://jigarius.com/"
   },
   "license": "UNLICENSED",
+  "engines": {
+    "node": "^20"
+  },
   "devDependencies": {
-    "glob": "^11.0.0",
+    "glob": "^9.3.5",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-babel": "^8.0.0",

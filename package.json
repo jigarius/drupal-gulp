@@ -18,12 +18,12 @@
   "private": true,
   "homepage": "https://github.com/jigarius/drupal-gulp",
   "engines": {
-    "node": "^22"
+    "node": "^20"
   },
   "main": "index.js",
   "dependencies": {
     "eslint-config-drupal": "^5.0.2",
-    "glob": "^11.0.0",
+    "glob": "^9.3.5",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-babel": "^8.0.0",
