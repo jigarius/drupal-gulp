@@ -180,7 +180,7 @@ function watchStyles() {
       ignored: config.styleIgnores,
       queue: true,
     },
-    gulp.series('clean:styles', 'build:styles', 'lint:styles'),
+    gulp.series('clean:styles', 'build:styles'),
   );
 }
 watchStyles.description = 'Watch style sources and rebuild when they change.';
@@ -220,7 +220,7 @@ function watchScripts() {
       ignored: config.scriptIgnores,
       queue: true,
     },
-    gulp.series('clean:scripts', 'build:scripts', 'lint:scripts'),
+    gulp.series('clean:scripts', 'build:scripts'),
   );
 }
 watchScripts.description = 'Watch script sources and rebuild when they change.';
@@ -229,8 +229,8 @@ gulp.task('watch:scripts', watchScripts);
 /**
  * Composite tasks.
  */
-gulp.task('clean', gulp.parallel('clean:styles', 'clean:scripts'));
 gulp.task('build', gulp.parallel('build:styles', 'build:scripts'));
+gulp.task('clean', gulp.parallel('clean:styles', 'clean:scripts'));
 gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('lint', gulp.series('lint:styles', 'lint:scripts'));
 gulp.task('watch', gulp.parallel('watch:styles', 'watch:scripts'));
