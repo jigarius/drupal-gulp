@@ -20,7 +20,17 @@ import uglify from 'gulp-uglify';
 
 import config from './gulp.config.mjs';
 
-logger.debug('Configuration:', config);
+logger.debug('Configuration:', config.toString());
+
+/**
+ * Show configuration.
+ */
+function showConfig(callback) {
+  console.log(config.toString());
+  callback();
+}
+showConfig.description = "Show the configuration object."
+gulp.task('config', showConfig);
 
 /**
  * Clean styles.
@@ -104,12 +114,6 @@ gulp.task('build:styles', buildStyles);
  * Build scripts.
  */
 function buildScripts() {
-  let uglifyOptions = config.getOptionsFor('uglify');
-  uglifyOptions['mangle'] = uglifyOptions['mangle'] || {};
-  uglifyOptions['mangle']['reserved'] = uglifyOptions['mangle']['reserved'] || [];
-  uglifyOptions['mangle']['reserved'] =
-    uglifyOptions['mangle']['reserved'].concat(config.getOptionsFor('globals'));
-
   return gulp
     .src(config.scriptSources, {
       allowEmpty: true,
@@ -118,7 +122,7 @@ function buildScripts() {
       sourcemaps: true,
     })
     .pipe(babel())
-    .pipe(uglify(uglifyOptions))
+    .pipe(uglify(config.optionsFor('uglify')))
     .pipe(
       rename((file) => {
         // Non-component scripts go into the "dist" directory.
