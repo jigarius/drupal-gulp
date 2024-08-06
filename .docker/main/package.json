@@ -27,7 +27,8 @@
     "eslint-config-drupal": "^5.0.2",
     "gulp-eslint": "^6.0.0",
     "gulp-sass-lint": "^1.4.0",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "svgstore": "^3.0.1"
   },
   "scripts": {
     "build": "npx gulp build",

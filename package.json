@@ -35,7 +35,8 @@
     "gulp-sass-lint": "^1.4.0",
     "gulp-uglify": "^3.0.2",
     "gulplog": "^2.2.0",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "svgstore": "^3.0.1"
   },
   "devDependencies": {
     "@types/gulp": "^4.0.17"

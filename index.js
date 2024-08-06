@@ -448,6 +448,28 @@ export class ConfigBuilder {
     return this;
   }
 
+  /**
+   * Define sources for an SVG Sprite.
+   *
+   * All files matched by patterns will be combined into a single SVG sprite
+   * at the destination. Each <symbol> will be assigned an ID based on the
+   * file's basename, thus, each file is assumed to have a unique base name.
+   *
+   * @param {string[]} patterns Globs to source SVGs.
+   *   Example: [web/themes/custom/foo/images/icons/*.svg]
+   * @param {string} dest Path to the combined SVG.
+   *   Example: web/themes/custom/foo/images/icons.svg
+   */
+  addSvgSpriteSources(patterns, dest) {
+    this.options['svg-sprites'] = this.options['svg-sprites'] || {};
+    this.options['svg-sprites'][dest] = patterns;
+
+    return this;
+  }
+
+  /**
+   * Initializes standard default values for various parameters.
+   */
   applyDefaults() {
     return this
       .addStyleIgnores([

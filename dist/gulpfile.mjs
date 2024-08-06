@@ -16,6 +16,7 @@ import logger from 'gulplog';
 import path from 'path';
 import rename from 'gulp-rename';
 import sassLint from 'gulp-sass-lint';
+import svgstore from 'svgstore';
 import uglify from 'gulp-uglify';
 
 import config from './gulp.config.mjs';
@@ -228,6 +229,33 @@ function watchScripts() {
 }
 watchScripts.description = 'Watch script sources and rebuild when they change.';
 gulp.task('watch:scripts', watchScripts);
+
+/**
+ * Build SVG Sprites.
+ */
+function buildSvgSprites(callback) {
+  const mapping = config.optionsFor('svg-sprites', {});
+
+  for (let dest in mapping) {
+    let patterns = mapping[dest];
+    let sprites = svgstore();
+
+    globSync(patterns).forEach((entry) => {
+      let id = path.basename(entry, '.svg')
+        .replace(/(\W)/gi, '-');
+
+      sprites.add(id, fs.readFileSync(entry, 'utf-8'));
+    });
+
+    fs.writeFileSync(dest, sprites.toString({
+      inline: true,
+    }));
+  }
+
+  callback();
+}
+buildSvgSprites.description = 'Unify multiple SVG files into SVG sprites.';
+gulp.task('build:svg-sprites', buildSvgSprites);
 
 /**
  * Composite tasks.
