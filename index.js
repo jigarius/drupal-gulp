@@ -64,7 +64,7 @@ export class DrupalExtension {
    *
    * @returns {string[]} Glob patterns.
    */
-  getStyleSourcePatterns() {
+  getStyleSources() {
     return [
       path.join(this.path, '**', '*.scss'),
     ];
@@ -89,7 +89,7 @@ export class DrupalExtension {
    *
    * @returns {string[]} Glob patterns.
    */
-  getStyleDestinationPatterns() {
+  getStyleDestinations() {
     return [
       path.join(this.path, 'dist', '*.min.css'),
       path.join(this.path, 'dist', '*.css.map'),
@@ -368,8 +368,8 @@ export class ConfigBuilder {
    */
   addExtension(ext, addStyles = true, addScripts = true) {
     if (addStyles) {
-      this.addStyleSources(ext.getStyleSourcePatterns());
-      this.addStyleDestinations(ext.getStyleDestinationPatterns());
+      this.addStyleSources(ext.getStyleSources());
+      this.addStyleDestinations(ext.getStyleDestinations());
     }
 
     if (addScripts) {
