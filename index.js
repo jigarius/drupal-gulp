@@ -110,8 +110,6 @@ export class DrupalExtension {
     return [
       path.join(this.path, 'dist', '*.min.js'),
       path.join(this.path, 'dist', '*.js.map'),
-      path.join(this.path, 'components', '**', '*.min.js'),
-      path.join(this.path, 'components', '**', '*.js.map'),
     ];
   }
 
@@ -458,6 +456,9 @@ export class ConfigBuilder {
       .addScriptIgnores([
         '**/node_modules/**',
         '**/vendor/**',
+        // Drupal's SDC require a COMPONENT.js and COMPONENT.min.js is
+        // ignored. Thus, ignore component-specific script files.
+        '**/components/**',
         '**/*.min.js',
       ])
       .setOptionsFor('globals', [
