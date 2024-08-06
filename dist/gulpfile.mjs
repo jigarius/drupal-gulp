@@ -91,8 +91,10 @@ function buildStyles() {
       rename((file) => {
         // Non-component styles go into the "dist" directory.
         // @todo Is this convention necessary?
-        if (file.dirname.startsWith('styles')) {
-          file.dirname = path.dirname(file.dirname) + '/dist';
+        const dirnameParts = file.dirname.split(path.sep);
+        if (dirnameParts[0] === 'styles') {
+          dirnameParts[0] = 'dist';
+          file.dirname = dirnameParts.join(path.sep);
         }
 
         file.extname = '.min' + file.extname;
@@ -127,13 +129,10 @@ function buildScripts() {
       rename((file) => {
         // Non-component scripts go into the "dist" directory.
         // @todo Is this convention necessary?
-        if (file.dirname.startsWith('scripts')) {
-          file.dirname = path.dirname(file.dirname) + '/dist';
-        }
-
-        // If the file extension is .es6.js then change it to .js.
-        if (path.extname(file.basename) === '.es6') {
-          file.basename = file.basename.replace(/\.es6$/, '');
+        const dirnameParts = file.dirname.split(path.sep);
+        if (dirnameParts[0] === 'scripts') {
+          dirnameParts[0] = 'dist';
+          file.dirname = dirnameParts.join(path.sep);
         }
 
         file.extname = '.min' + file.extname;
