@@ -256,7 +256,9 @@ export class ConfigBuilder {
     this.scriptSources = [];
     this.scriptDestinations = [];
     this.scriptIgnores = [];
-    this.options = {};
+    this.options = {
+      'globals': [],
+    };
   }
 
   get drupalRoot() {
@@ -469,13 +471,29 @@ export class ConfigBuilder {
         'once',
       ])
       .setOptionsFor('uglify', {
-        mangle: {
-          reserved: this.options['globals']
-        },
         output: {
           comments: 'some'
         }
       });
+  }
+
+  /**
+   * Normalize the builder's current state.
+   */
+  normalize() {
+    // Normalize globals.
+    let globals = this.getOptionsFor('globals', []);
+    globals = [...new Set(globals)];
+    this.setOptionsFor('globals', globals);
+
+    // Normalize Uglify options.
+    let uglifyOptions = this.getOptionsFor('uglify', {});
+    uglifyOptions['mangle'] = uglifyOptions['mangle'] || {};
+    uglifyOptions['mangle']['reserved'] = uglifyOptions['mangle']['reserved'] || [];
+    uglifyOptions['mangle']['reserved'] = globals.concat(uglifyOptions['mangle']['reserved']);
+    uglifyOptions['mangle']['reserved'] = [...new Set(uglifyOptions['mangle']['reserved'])];
+
+    return this;
   }
 
   /**
@@ -484,6 +502,8 @@ export class ConfigBuilder {
    * @returns {Config} Configuration.
    */
   build() {
+    this.normalize();
+
     return new Config({
       projectRoot: this.projectRoot,
       drupalRoot: this.drupalRoot,
