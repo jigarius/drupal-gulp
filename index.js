@@ -223,10 +223,17 @@ class Config {
    *
    * @param {string} key Options key.
    *   Usually, this is the name of a plugin. Example: uglify.
-   * @return {Object} Options object.
+   * @param {any} fallback A fallback value.
+   *   If the option is not set, this value is returned.
+   *
+   * @return {any} Options object.
    */
-  optionsFor(key) {
-    return this._data.options[key] || {};
+  optionsFor(key, fallback = null) {
+    if (key in this._data.options) {
+      return this._data.options[key];
+    }
+
+    return fallback;
   }
 
 }
@@ -410,11 +417,29 @@ export class ConfigBuilder {
   }
 
   /**
+   * Get options for a plugin.
+   *
+   * @param {string} key Options key.
+   *   Usually, this is the name of a plugin. Example: uglify.
+   * @param {any} fallback A fallback value.
+   *   If the option is not set, this value is returned.
+   *
+   * @return {any} Options object.
+   */
+  getOptionsFor(key, fallback = null) {
+    if (key in this.options) {
+      return this.options[key];
+    }
+
+    return fallback;
+  }
+
+  /**
    * Set options for a plugin.
    *
    * @param {string} key Options key.
    *   Usually, this is the name of a plugin. Example: uglify.
-   * @param {Object} opts Options object.
+   * @param {{}} opts Options object.
    *
    * @return {this}
    */
