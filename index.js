@@ -427,10 +427,12 @@ export class ConfigBuilder {
     return this
       .addStyleIgnores([
         '**/node_modules/**',
+        '**/vendor/**',
         '**/*.min.css',
       ])
       .addScriptIgnores([
         '**/node_modules/**',
+        '**/vendor/**',
         '**/*.min.js',
       ])
       .setOptionsFor('globals', [
