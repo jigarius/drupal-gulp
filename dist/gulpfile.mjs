@@ -124,8 +124,8 @@ function buildScripts() {
       ignore: config.scriptIgnores,
       sourcemaps: true,
     })
-    .pipe(babel())
-    .pipe(uglify(config.optionsFor('uglify')))
+    .pipe(babel(config.optionsFor('babel', {})))
+    .pipe(uglify(config.optionsFor('uglify', {})))
     .pipe(
       rename((file) => {
         // Non-component scripts go into the "dist" directory.

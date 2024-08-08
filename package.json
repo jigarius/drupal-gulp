@@ -22,6 +22,7 @@
   },
   "main": "index.js",
   "dependencies": {
+    "@babel/preset-env": "^7.25.3",
     "eslint-config-drupal": "^5.0.2",
     "glob": "^9.3.5",
     "gulp": "^5.0.0",

@@ -23,6 +23,7 @@
     "sass": "^1.77.8"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.25.3",
     "drupal-gulp": "file:../package",
     "eslint-config-drupal": "^5.0.2",
     "gulp-eslint": "^6.0.0",

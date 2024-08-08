@@ -506,9 +506,12 @@ export class ConfigBuilder {
         'jQuery',
         'once',
       ])
+      .setOptionsFor('babel', {
+        presets: ['@babel/preset-env'],
+      })
       .setOptionsFor('uglify', {
         output: {
-          comments: 'some'
+          comments: 'some',
         }
       });
   }
