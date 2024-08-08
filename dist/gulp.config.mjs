@@ -13,11 +13,14 @@ const builder = new ConfigBuilder(cwd);
 
 builder.applyDefaults();
 
-// Process all custom themes.
+// Add all custom themes.
 builder.addAllCustomThemes();
 
-// Process all custom modules.
+// Add all custom modules.
 builder.addAllCustomThemes();
+
+// Add a specific extension.
+// builder.addExtensionByPath('web/modules/custom/foo');
 
 // Combine multiple SVG files into SVG sprites.
 // builder.addSvgSpriteSources(

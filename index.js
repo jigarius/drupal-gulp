@@ -359,7 +359,7 @@ export class ConfigBuilder {
   }
 
   /**
-   * Add styles and scripts for a Drupal extension.
+   * Add styles and/or scripts for a Drupal extension.
    *
    * @param {DrupalExtension} ext
    * @param {boolean} addStyles Whether to add styles.
@@ -378,6 +378,20 @@ export class ConfigBuilder {
     }
 
     return this;
+  }
+
+  /**
+   * Add styles and/or scripts for a Drupal extension.
+   *
+   * @param {string} path Path to the extension's directory.
+   * @param {string} addStyles Whether to add styles.
+   * @param {string} addScripts Whether to add scripts.
+   *
+   * @return {this}
+   */
+  addExtensionByPath(path, addStyles = true, addScripts = true) {
+    const ext = new DrupalExtension(path);
+    return this.addExtension(ext, addStyles, addScripts);
   }
 
   /**
