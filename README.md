@@ -53,11 +53,12 @@ the following directory structure.
 
 ### Commands
 
-See a list of all Gulp tasks with `gulp -T`. Usually, the two most common
-tasks are:
+See a list of all Gulp tasks with `gulp -T`. Here are some common tasks:
 
-* `gulp build`
-* `gulp watch`
+* `gulp build` - Build all assets.
+* `gulp watch` - Watch for changes and build assets when sources change.
+* `gulp config` - Display the final configuration object received by
+  Gulp tasks. This is useful debugging. 
 
 Optionally, you can add the following scripts to your `package.json`.
 
