@@ -21,6 +21,10 @@ builder.addAllCustomModules();
 
 // Add a specific extension.
 // builder.addExtensionByPath('web/modules/custom/foo');
+// By default, both styles and scripts are processed for each extension,
+// however, it is possible to specify whether only styles or scripts
+// should be processed.
+// builder.addExtensionByPath('web/modules/custom/foo', true, false);
 
 // Combine multiple SVG files into SVG sprites.
 // builder.addSvgSpriteSources(
