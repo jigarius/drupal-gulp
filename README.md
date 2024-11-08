@@ -58,7 +58,12 @@ See a list of all Gulp tasks with `gulp -T`. Here are some common tasks:
 * `gulp build` - Build all assets.
 * `gulp watch` - Watch for changes and build assets when sources change.
 * `gulp config` - Display the final configuration object received by
-  Gulp tasks. This is useful debugging. 
+  Gulp tasks. This is useful debugging.
+
+To vary the verbosity of Gulp output, use the `-L` flag. For example, to view
+debug-level output, you can run `gulp -LLLL build`.
+
+### Scripts
 
 Optionally, you can add the following scripts to your `package.json`.
 
