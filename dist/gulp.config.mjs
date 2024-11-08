@@ -1,7 +1,7 @@
 /**
  * Gulp Configuration.
  *
- * This config file is for use during the development of drupal-gulp.
+ * @see https://github.com/jigarius/drupal-gulp/blob/1.x/dist/gulp.config.mjs
  */
 
 import { ConfigBuilder } from 'drupal-gulp';
