@@ -17,7 +17,7 @@ builder.applyDefaults();
 builder.addAllCustomThemes();
 
 // Add all custom modules.
-builder.addAllCustomThemes();
+builder.addAllCustomModules();
 
 // Add a specific extension.
 // builder.addExtensionByPath('web/modules/custom/foo');
