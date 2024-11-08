@@ -68,7 +68,11 @@ gulp.task('clean:scripts', cleanScripts);
 /**
  * Build styles.
  */
-function buildStyles() {
+function buildStyles(callback) {
+  if (config.styleSources.length === 0) {
+    return callback();
+  }
+
   const sass = gulpSass(dartSass);
   return gulp
     .src(config.styleSources, {
@@ -116,7 +120,11 @@ gulp.task('build:styles', buildStyles);
 /**
  * Build scripts.
  */
-function buildScripts() {
+function buildScripts(callback) {
+  if (config.scriptSources.length === 0) {
+    return callback();
+  }
+
   return gulp
     .src(config.scriptSources, {
       allowEmpty: true,
@@ -154,7 +162,11 @@ gulp.task('build:scripts', buildScripts);
 /**
  * Lint styles.
  */
-function lintStyles() {
+function lintStyles(callback) {
+  if (config.styleSources.length === 0) {
+    return callback();
+  }
+
   return gulp
     .src(config.styleSources, {
       allowEmpty: true,
@@ -193,7 +205,11 @@ gulp.task('watch:styles', watchStyles);
 /**
  * Lint scripts.
  */
-function lintScripts() {
+function lintScripts(callback) {
+  if (config.scriptSources.length === 0) {
+    return callback();
+  }
+
   return gulp
     .src(config.scriptSources, {
       allowEmpty: true,
