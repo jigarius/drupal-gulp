@@ -34,16 +34,23 @@ showConfig.description = "Show the configuration object."
 gulp.task('config', showConfig);
 
 /**
+ * Unlink a glob pattern.
+ *
+ * @param {string} pattern
+ *   A glob pattern.
+ */
+function globSyncUnlink(pattern) {
+  globSync(pattern).forEach((path) => {
+    fs.unlinkSync(path);
+    logger.debug(`Deleted: ${path}`);
+  });
+}
+
+/**
  * Clean styles.
  */
 function cleanStyles(callback) {
-  config.styleDestinations.forEach((pattern) => {
-    globSync(pattern).forEach((path) => {
-      fs.unlinkSync(path);
-      logger.debug(`Deleted: ${path}`);
-    });
-  });
-
+  config.styleDestinations.map(globSyncUnlink);
   callback();
 }
 cleanStyles.description = 'Clean style output directories.';
@@ -53,13 +60,7 @@ gulp.task('clean:styles', cleanStyles);
  * Clean scripts.
  */
 function cleanScripts(callback) {
-  config.scriptDestinations.forEach((pattern) => {
-    globSync(pattern).forEach((path) => {
-      fs.unlinkSync(path);
-      logger.debug(`Deleted: ${path}`);
-    });
-  });
-
+  config.scriptDestinations.map(globSyncUnlink);
   callback();
 }
 cleanScripts.description = 'Clean script output directories.';
