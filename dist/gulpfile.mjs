@@ -26,50 +26,49 @@ logger.debug('Configuration:', config.toString());
 /**
  * Show configuration.
  */
-function showConfig(callback) {
+export function showConfig(callback) {
   console.log(config.toString());
   callback();
 }
+showConfig.displayName = 'config';
 showConfig.description = "Show the configuration object."
-gulp.task('config', showConfig);
-
-/**
- * Unlink a glob pattern.
- *
- * @param {string} pattern
- *   A glob pattern.
- */
-function globSyncUnlink(pattern) {
-  globSync(pattern).forEach((path) => {
-    fs.unlinkSync(path);
-    logger.debug(`Deleted: ${path}`);
-  });
-}
 
 /**
  * Clean styles.
  */
-function cleanStyles(callback) {
-  config.styleDestinations.map(globSyncUnlink);
+export function cleanStyles(callback) {
+  config.styleDestinations.forEach((pattern) => {
+    globSync(pattern).forEach((path) => {
+      fs.unlinkSync(path);
+      logger.debug(`Deleted: ${path}`);
+    });
+  });
+
   callback();
 }
+cleanStyles.displayName = 'clean:styles';
 cleanStyles.description = 'Clean style output directories.';
-gulp.task('clean:styles', cleanStyles);
 
 /**
  * Clean scripts.
  */
-function cleanScripts(callback) {
-  config.scriptDestinations.map(globSyncUnlink);
+export function cleanScripts(callback) {
+  config.scriptDestinations.forEach((pattern) => {
+    globSync(pattern).forEach((path) => {
+      fs.unlinkSync(path);
+      logger.debug(`Deleted: ${path}`);
+    });
+  });
+
   callback();
 }
+cleanScripts.displayName = 'clean:scripts';
 cleanScripts.description = 'Clean script output directories.';
-gulp.task('clean:scripts', cleanScripts);
 
 /**
  * Build styles.
  */
-function buildStyles(callback) {
+export function buildStyles(callback) {
   if (config.styleSources.length === 0) {
     return callback();
   }
@@ -115,13 +114,13 @@ function buildStyles(callback) {
       })
     );
 }
+buildStyles.displayName = 'build:styles';
 buildStyles.description = 'Build styles.';
-gulp.task('build:styles', buildStyles);
 
 /**
  * Build scripts.
  */
-function buildScripts(callback) {
+export function buildScripts(callback) {
   if (config.scriptSources.length === 0) {
     return callback();
   }
@@ -157,13 +156,13 @@ function buildScripts(callback) {
       })
     );
 }
+buildScripts.displayName = 'build:scripts';
 buildScripts.description = 'Build scripts.';
-gulp.task('build:scripts', buildScripts);
 
 /**
  * Lint styles.
  */
-function lintStyles(callback) {
+export function lintStyles(callback) {
   if (config.styleSources.length === 0) {
     return callback();
   }
@@ -181,13 +180,13 @@ function lintStyles(callback) {
     .pipe(sassLint.format())
     .pipe(sassLint.failOnError());
 }
+lintStyles.displayName = 'lint:styles';
 lintStyles.description = 'Lint all styles.';
-gulp.task('lint:styles', lintStyles);
 
 /**
  * Watch styles.
  */
-function watchStyles() {
+export function watchStyles() {
   gulp.watch(
     config.styleSources,
     {
@@ -200,13 +199,13 @@ function watchStyles() {
     gulp.series('clean:styles', 'build:styles'),
   );
 }
+watchStyles.displayName = 'watch:styles';
 watchStyles.description = 'Watch style sources and rebuild when they change.';
-gulp.task('watch:styles', watchStyles);
 
 /**
  * Lint scripts.
  */
-function lintScripts(callback) {
+export function lintScripts(callback) {
   if (config.scriptSources.length === 0) {
     return callback();
   }
@@ -225,13 +224,13 @@ function lintScripts(callback) {
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 }
+lintScripts.displayName = 'lint:scripts';
 lintScripts.description = 'Lint all scripts.';
-gulp.task('lint:scripts', lintScripts);
 
 /**
  * Watch scripts.
  */
-function watchScripts() {
+export function watchScripts() {
   gulp.watch(
     config.scriptSources,
     {
@@ -244,13 +243,13 @@ function watchScripts() {
     gulp.series('clean:scripts', 'build:scripts'),
   );
 }
+watchScripts.displayName = 'watch:scripts';
 watchScripts.description = 'Watch script sources and rebuild when they change.';
-gulp.task('watch:scripts', watchScripts);
 
 /**
  * Build SVG Sprites.
  */
-function buildSvgSprites(callback) {
+export function buildSvgSprites(callback) {
   const mapping = config.optionsFor('svg-sprites', {});
 
   for (let dest in mapping) {
@@ -271,14 +270,18 @@ function buildSvgSprites(callback) {
 
   callback();
 }
+buildSvgSprites.displayName = 'build:svg-sprites';
 buildSvgSprites.description = 'Unify multiple SVG files into SVG sprites.';
-gulp.task('build:svg-sprites', buildSvgSprites);
 
 /**
  * Composite tasks.
  */
-gulp.task('build', gulp.parallel('build:styles', 'build:scripts'));
-gulp.task('clean', gulp.parallel('clean:styles', 'clean:scripts'));
-gulp.task('default', gulp.series('clean', 'build'));
-gulp.task('lint', gulp.series('lint:styles', 'lint:scripts'));
-gulp.task('watch', gulp.parallel('watch:styles', 'watch:scripts'));
+export const build = gulp.parallel(buildStyles, buildScripts);
+export const clean = gulp.parallel(cleanStyles, cleanScripts);
+export const lint = gulp.series(lintStyles, lintScripts);
+export const watch = gulp.parallel(watchStyles, watchScripts);
+
+/**
+ * Default task.
+ */
+export default gulp.series(clean, build);
