@@ -2,13 +2,13 @@
 <head>
   <title>Drupal Gulp</title>
   <!-- Package: theme1 -->
-  <link href="./themes/custom/theme1/dist/theme1.a.min.css" type="text/css" rel="stylesheet"/>
-  <link href="./themes/custom/theme1/dist/theme1.b.min.css" type="text/css" rel="stylesheet"/>
-  <link href="./themes/custom/theme1/dist/misc/critical.min.css" type="text/css" rel="stylesheet"/>
+  <link href="./themes/custom/theme1/styles/theme1.a.min.css" type="text/css" rel="stylesheet"/>
+  <link href="./themes/custom/theme1/styles/theme1.b.min.css" type="text/css" rel="stylesheet"/>
+  <link href="./themes/custom/theme1/styles/misc/critical.min.css" type="text/css" rel="stylesheet"/>
   <link href="./themes/custom/theme1/components/atoms/button/button.min.css" type="text/css" rel="stylesheet"/>
   <!-- Package: module1 -->
-  <link href="./modules/custom/module1/dist/module1.a.min.css" type="text/css" rel="stylesheet"/>
-  <link href="./modules/custom/module1/dist/module1.b.min.css" type="text/css" rel="stylesheet"/>
+  <link href="./modules/custom/module1/styles/module1.a.min.css" type="text/css" rel="stylesheet"/>
+  <link href="./modules/custom/module1/styles/module1.b.min.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
@@ -27,7 +27,10 @@
   <h2 id="general">General</h2>
   <ul class="test-list">
     <li>
-      <span class="badge">Pass</span> indicates a failed test.
+      <span class="badge">Pass</span> written in red indicates a failed test.
+    </li>
+    <li>
+      <span class="badge badge--success">Pass</span> written in green indicates a successful test.
     </li>
     <li class="test-4">
       <span class="badge">Pass</span> Background image:
@@ -108,12 +111,12 @@
 </script>
 
 <!-- Package: theme1 -->
-<script src="./themes/custom/theme1/dist/theme1.a.min.js"></script>
-<script src="./themes/custom/theme1/dist/theme1.b.min.js"></script>
+<script src="./themes/custom/theme1/scripts/theme1.a.min.js"></script>
+<script src="./themes/custom/theme1/scripts/theme1.b.min.js"></script>
 <script src="./themes/custom/theme1/components/atoms/button/button.min.js"></script>
 <!-- Package: module1 -->
-<script src="./modules/custom/module1/dist/module1.a.min.js"></script>
-<script src="./modules/custom/module1/dist/module1.b.min.js"></script>
+<script src="./modules/custom/module1/scripts/module1.a.min.js"></script>
+<script src="./modules/custom/module1/scripts/module1.b.min.js"></script>
 
 </body>
 </html>

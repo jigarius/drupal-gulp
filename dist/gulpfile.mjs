@@ -94,14 +94,7 @@ export function buildStyles(callback) {
     .pipe(csso())
     .pipe(
       rename((file) => {
-        // Non-component styles go into the "dist" directory.
-        // @todo Is this convention necessary?
-        const dirnameParts = file.dirname.split(path.sep);
-        if (dirnameParts[0] === 'styles') {
-          dirnameParts[0] = 'dist';
-          file.dirname = dirnameParts.join(path.sep);
-        }
-
+        // Output files are named *.min.ext.
         file.extname = '.min' + file.extname;
       })
     )
@@ -136,14 +129,7 @@ export function buildScripts(callback) {
     .pipe(uglify(config.optionsFor('uglify', {})))
     .pipe(
       rename((file) => {
-        // Non-component scripts go into the "dist" directory.
-        // @todo Is this convention necessary?
-        const dirnameParts = file.dirname.split(path.sep);
-        if (dirnameParts[0] === 'scripts') {
-          dirnameParts[0] = 'dist';
-          file.dirname = dirnameParts.join(path.sep);
-        }
-
+        // Output files are named *.min.ext.
         file.extname = '.min' + file.extname;
       })
     )

@@ -1,6 +1,9 @@
-/web/**/modules/custom/**/*.css
-/web/**/modules/custom/**/*.js
+# Module output.
+/web/**/modules/custom/**/*.min.css
+/web/**/modules/custom/**/*.min.js
 /web/**/modules/custom/**/*.map
-/web/**/themes/custom/**/*.css
-/web/**/themes/custom/**/*.js
+
+# Theme output.
+/web/**/themes/custom/**/*.min.css
+/web/**/themes/custom/**/*.min.js
 /web/**/themes/custom/**/*.map
