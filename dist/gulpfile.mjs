@@ -205,6 +205,7 @@ export function lintScripts(callback) {
     })
     .pipe(eslint({
       files: config.scriptSources,
+      globals: config.optionsFor('globals', []),
       ignores: config.scriptIgnores,
     }))
     .pipe(eslint.format())
