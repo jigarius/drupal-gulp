@@ -11,6 +11,7 @@
     "node": "^20"
   },
   "devDependencies": {
+    "eslint-plugin-yml": "^1.19.1",
     "glob": "^9.3.5",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
@@ -20,7 +21,8 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "gulplog": "^2.2.0",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "sass-lint-auto-fix": "^0.21.2"
   },
   "dependencies": {
     "@babel/preset-env": "^7.25.3",
