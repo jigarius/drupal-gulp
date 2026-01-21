@@ -82,9 +82,8 @@ export function buildStyles(callback) {
       sourcemaps: true,
     })
     .pipe(
-      sass({
-        outputStyle: 'expanded'
-      }).on('error', sass.logError)
+      sass(config.optionsFor('sass'))
+        .on('error', sass.logError)
     )
     .pipe(
       autoprefixer({

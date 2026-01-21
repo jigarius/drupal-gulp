@@ -504,6 +504,9 @@ export class ConfigBuilder {
         // Files that are already processed.
         '**/*.min.js',
       ])
+      .setOptionsFor('sass', {
+        outputStyle: 'expanded'
+      })
       .setOptionsFor('globals', [
         '$',
         'Drupal',
